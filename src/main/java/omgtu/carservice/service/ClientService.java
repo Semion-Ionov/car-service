@@ -1,5 +1,7 @@
 package omgtu.carservice.service;
 
+import omgtu.carservice.dto.LoginModel;
+import omgtu.carservice.dto.RequestToken;
 import omgtu.carservice.model.Client;
 import omgtu.carservice.repository.ClientRepository;
 import org.springframework.stereotype.Service;
@@ -15,36 +17,18 @@ public class ClientService {
     }
 
 
-//    public String registrationUser(String userJson) {
-//        Client client;
-//        try {
-//            client = gson.fromJson(userJson, Client.class);
-//            Client client1 = clientRepository.save(client);
-//        } catch (JsonSyntaxException ex) {
-//            return gson.toJson(new Response(ResultType.ERROR, ex.getMessage()));
-//        }
-//        String token = activeUsers.putUser(client);
-//        return gson.toJson(new Response(ResultType.SUCCESSFUL, token));
-//    }
-//
-//    public String loginUser(String loginDataJson) {
-//        LoginModel loginModel = gson.fromJson(loginDataJson, LoginModel.class);
-//        Client client = clientRepository.findByEmailAndPswd(loginModel.getEmail(), loginModel.getPswd());
-//        if (client == null) {
-//            return gson.toJson(new Response(ResultType.ERROR, "wrong login or password"));
-//        }
-//        String token = activeUsers.putUser(client);
-//        return gson.toJson(new Response(ResultType.SUCCESSFUL, token));
-//    }
-//
-//    public String logoutUser(String tokenJson) {
-//        RequestToken requestToken;
-//        try {
-//            requestToken = gson.fromJson(tokenJson, RequestToken.class);
-//        } catch (JsonSyntaxException ex) {
-//            return gson.toJson(new Response(ResultType.ERROR, ex.getMessage()));
-//        }
-//        activeUsers.removeUser(requestToken.getToken());
-//        return gson.toJson(new Response(ResultType.SUCCESSFUL, ""));
-//    }
+    public String registrationUser(Client client) {
+        Client client1 = clientRepository.save(client);
+        return activeUsers.putUser(client);
+    }
+
+    public String loginUser(LoginModel loginModel) {
+        Client client = clientRepository.findByEmailAndPswd(loginModel.getEmail(), loginModel.getPswd());
+        return activeUsers.putUser(client);
+    }
+
+    public String logoutUser(String token) {
+        activeUsers.removeUser(token);
+        return "Succsefull";
+    }
 }

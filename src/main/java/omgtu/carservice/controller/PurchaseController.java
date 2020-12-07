@@ -16,7 +16,7 @@ public class PurchaseController {
     }
 
     @PostMapping
-    public Purchase save(Purchase purchase) {
+    public Purchase save(@RequestBody Purchase purchase) {
         return purchaseService.save(purchase);
     }
 
