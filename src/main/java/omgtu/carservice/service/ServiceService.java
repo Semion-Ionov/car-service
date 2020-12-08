@@ -18,6 +18,6 @@ public class ServiceService {
     }
 
     public Service getById(Long id) {
-        return serviceRepository.getOne(id);
+        return serviceRepository.findById(id).get();
     }
 }

@@ -19,6 +19,6 @@ public class SpareService {
     }
 
     public Spare getById(Long id) {
-        return spareRepository.getOne(id);
+        return spareRepository.findById(id).get();
     }
 }

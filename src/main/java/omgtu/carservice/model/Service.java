@@ -2,8 +2,6 @@ package omgtu.carservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.DynamicUpdate;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
