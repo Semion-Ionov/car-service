@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class LoginModel {
     private String email;
-    private String pswd;
+    private Short pswd;
 }
