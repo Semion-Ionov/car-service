@@ -5,9 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@ToString(exclude = {"client", "service"})
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "purchases")
 public class Purchase {

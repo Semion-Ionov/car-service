@@ -5,9 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@ToString(exclude = {"spares"})
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "producers")
 public class Producer {

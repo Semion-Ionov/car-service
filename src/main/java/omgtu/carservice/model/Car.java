@@ -7,9 +7,9 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@ToString(exclude = {"spares"})
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "cars")
 public class Car {

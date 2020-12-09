@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@ToString(exclude = {"car", "producer", "orders"})
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "spares")
 public class Spare {

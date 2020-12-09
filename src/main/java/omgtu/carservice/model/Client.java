@@ -6,9 +6,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@ToString(exclude = {"orders", "purchases"})
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "clients")
 public class Client {
@@ -24,7 +24,7 @@ public class Client {
 
     private String email;
 
-    private Short pswd;
+    private String pswd;
 
     @JsonIgnore
     @OneToMany(mappedBy = "client",

@@ -19,7 +19,7 @@ public class OrderService {
     }
 
     public List<Order> getByToken(String token) {
-        return orderRepository.getAllByClient(ActiveUsersService.getActiveUsersInstance()
-                                                                     .getUser(token));
+        var client = ActiveUsersService.getActiveUsersInstance().getUser(token);
+        return orderRepository.getAllByClient(client);
     }
 }

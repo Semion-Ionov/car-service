@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@ToString(exclude = {"spare", "client"})
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "orders")
 public class Order {

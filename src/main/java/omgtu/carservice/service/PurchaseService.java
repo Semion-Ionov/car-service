@@ -19,7 +19,7 @@ public class PurchaseService {
     }
 
     public List<Purchase> getByToken(String token) {
-        return purchaseRepository.getAllByClient(ActiveUsersService.getActiveUsersInstance()
-                                                                        .getUser(token));
+        var client = ActiveUsersService.getActiveUsersInstance().getUser(token);
+        return purchaseRepository.getAllByClient(client);
     }
 }
