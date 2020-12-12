@@ -16,7 +16,7 @@ public class ClientController {
     @ResponseBody
     @PostMapping("/registration")
     public String registration(@RequestBody Client client) {
-        return "{\"token\":\"" + clientService.registrationUser(client) + "\", \"user\":\"{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }\"}";
+        return "{\"token\":\"" + clientService.registrationUser(client) + "\", \"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }}";
     }
 
     @PostMapping("/login")
