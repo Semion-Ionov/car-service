@@ -2,7 +2,6 @@ package omgtu.carservice.controller;
 
 import omgtu.carservice.model.Service;
 import omgtu.carservice.service.ServiceService;
-import omgtu.carservice.service.SpareService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
