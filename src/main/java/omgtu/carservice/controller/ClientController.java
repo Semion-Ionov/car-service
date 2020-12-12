@@ -3,10 +3,7 @@ package omgtu.carservice.controller;
 import omgtu.carservice.dto.LoginModel;
 import omgtu.carservice.model.Client;
 import omgtu.carservice.service.ClientService;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ClientController {
@@ -16,9 +13,10 @@ public class ClientController {
         this.clientService = clientService;
     }
 
+    @ResponseBody
     @PostMapping("/registration")
     public String registration(@RequestBody Client client) {
-        return clientService.registrationUser(client);
+        return "{\"token\":\"" + clientService.registrationUser(client) + "\", \"user\":\"{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }\"}";
     }
 
     @PostMapping("/login")
