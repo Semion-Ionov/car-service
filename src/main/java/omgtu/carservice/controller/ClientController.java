@@ -30,7 +30,7 @@ public class ClientController {
     }
 
     @PostMapping("/getbytoken")
-    public String getUserByToken(@CookieValue(value = "token") String token) {
+    public String getUserByToken(@CookieValue(value = "token", required = false) String token) {
         return clientService.getUserByToken(token);
     }
 }
