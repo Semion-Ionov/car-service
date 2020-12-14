@@ -22,8 +22,12 @@ public class ClientService {
 
     public String loginUser(LoginModel loginModel) {
         Client client = clientRepository.findByEmailAndPswd(loginModel.getEmail(),
-                                                            loginModel.getPswd());
-        return activeUsers.putUser(client);
+                loginModel.getPswd());
+        if (client == null) {
+            return "{\"status\":\"401\",\"message\":\"Неверный логин или пароль\"}";
+        }
+        return "{\"status\":\"200\", \"token\":\"" + activeUsers.putUser(client) + "\", \"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }}";
+
     }
 
     public String logoutUser(String token) {
