@@ -26,7 +26,7 @@ public class ClientService {
         if (client == null) {
             return "{\"status\":\"401\",\"message\":\"Неверный логин или пароль\"}";
         }
-        return "{\"status\":\"200\", \"token\":\"" + activeUsers.putUser(client) + "\", \"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getPhone()+"\" ,\"email\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }}";
+        return "{\"status\":\"200\", \"token\":\"" + activeUsers.putUser(client) + "\", \"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getPhone() + "\" ,\"email\":\"" + client.getEmail() + "\"}}";
 
     }
 
@@ -35,11 +35,11 @@ public class ClientService {
         if (client == null) {
             return "{\"status\":\"401\",\"message\":\"Для данного токена не найдено соответствий с юзерами\"}";
         }
-        return "{\"status\":\"200\",\"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getPhone()+"\" ,\"email\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }}";
+        return "{\"status\":\"200\",\"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getPhone() + "\" ,\"email\":\"" + client.getEmail() + "\"}}";
     }
 
     public String logoutUser(String token) {
         activeUsers.removeUser(token);
-        return "Successful";
+        return "{\"message\":\"Successful\"}";
     }
 }
