@@ -16,7 +16,7 @@ public class ClientController {
     @ResponseBody
     @PostMapping("/registration")
     public String registration(@RequestBody Client client) {
-        return "{\"token\":\"" + clientService.registrationUser(client) + "\", \"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }}";
+        return "{\"token\":\"" + clientService.registrationUser(client) + "\", \"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getPhone() + "\" ,\"email\":\"" + client.getEmail() + "\", \"pswd\":\"" + client.getPswd() + "\" }}";
     }
 
     @PostMapping("/login")
@@ -27,5 +27,10 @@ public class ClientController {
     @PostMapping("/logout")
     public String logout(@CookieValue(value = "token") String token) {
         return clientService.logoutUser(token);
+    }
+
+    @PostMapping("/getbytoken")
+    public String getUserByToken(@CookieValue(value = "token") String token) {
+        return clientService.getUserByToken(token);
     }
 }
