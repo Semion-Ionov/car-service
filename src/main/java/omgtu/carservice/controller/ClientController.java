@@ -25,12 +25,11 @@ public class ClientController {
     }
 
     @PostMapping("/logout")
-    public String logout(@CookieValue(value = "token") String token) {
+    public String logout(@RequestHeader(value = "Authorization") String token) {
         return clientService.logoutUser(token);
     }
-
     @PostMapping("/getbytoken")
-    public String getUserByToken(@CookieValue(value = "token", required = false) String token) {
+    public String getUserByToken(@RequestHeader(value = "Authorization") String token) {
         return clientService.getUserByToken(token);
     }
 }
