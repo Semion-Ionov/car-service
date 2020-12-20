@@ -2,13 +2,15 @@ package omgtu.carservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Getter @Setter
-@ToString(exclude = {"car", "producer", "orders"})
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "spares")
 public class Spare {
@@ -16,25 +18,26 @@ public class Spare {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    @Column(name = "categoryid")
+    private Long categoryId;
 
-    private BigDecimal price;
-
+    @Column(name = "type")
     private String type;
 
-    @Column(name = "img_ref")
-    private String imgRef;
+    @Column(name = "name")
+    private String name;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Car car;
+    @Column(name = "manufacturer")
+    private String manufacturer;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Producer producer;
+    @Column(name = "price")
+    private BigDecimal price;
+
+    @Column(name = "img")
+    private String img;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,
-               mappedBy = "spare")
+            mappedBy = "spare")
     private List<Order> orders;
 }

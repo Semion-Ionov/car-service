@@ -17,15 +17,13 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "brand")
     private String brand;
 
+    @Column(name = "model")
     private String model;
 
     @Column(name = "issue_year")
     private Short issueYear;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "car",
-               fetch = FetchType.LAZY)
-    private List<Spare> spares;
 }

@@ -21,8 +21,4 @@ public class Producer {
 
     private String phone;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "producer",
-               fetch = FetchType.LAZY)
-    private List<Spare> spares;
 }
