@@ -18,4 +18,8 @@ public class OrderService {
         return orderRepository.saveAll(orders);
     }
 
+    public List<Order> getAll(String token) {
+        var client = ActiveUsersService.getActiveUsersInstance().getUser(token);
+        return client.getOrders();
+    }
 }
