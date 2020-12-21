@@ -5,10 +5,9 @@ import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter @Setter
-@ToString(exclude = {"spares"})
+@ToString()
 @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "cars")

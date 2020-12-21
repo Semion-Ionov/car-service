@@ -1,12 +1,11 @@
 package omgtu.carservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Getter @Setter
-@ToString(exclude = {"spares"})
+@ToString()
 @NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "producers")

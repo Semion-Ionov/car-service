@@ -1,6 +1,9 @@
 package omgtu.carservice.service;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import omgtu.carservice.dto.LoginModel;
+import omgtu.carservice.dto.LoginResponseModel;
 import omgtu.carservice.model.Client;
 import omgtu.carservice.repository.ClientRepository;
 import org.springframework.stereotype.Service;
@@ -26,8 +29,7 @@ public class ClientService {
         if (client == null) {
             return "{\"status\":\"401\",\"message\":\"Неверный логин или пароль\"}";
         }
-        return "{\"status\":\"200\", \"token\":\"" + activeUsers.putUser(client) + "\", \"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getPhone() + "\" ,\"email\":\"" + client.getEmail() + "\"}}";
-
+        return new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create().toJson(new LoginResponseModel(200, activeUsers.putUser(client), client));
     }
 
     public String getUserByToken(String token) {
