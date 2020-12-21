@@ -3,6 +3,7 @@ package omgtu.carservice.service;
 import omgtu.carservice.dto.DeleteRequestModel;
 import omgtu.carservice.dto.DeleteResponseModel;
 import omgtu.carservice.model.Order;
+import omgtu.carservice.repository.ClientRepository;
 import omgtu.carservice.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +12,11 @@ import java.util.List;
 @Service
 public class OrderService {
     private final OrderRepository orderRepository;
+    private final ClientRepository clientRepository;
 
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository, ClientRepository clientRepository) {
         this.orderRepository = orderRepository;
+        this.clientRepository = clientRepository;
     }
 
     public List<Order> saveAll(List<Order> orders) {
@@ -22,6 +25,7 @@ public class OrderService {
 
     public List<Order> getAll(String token) {
         var client = ActiveUsersService.getActiveUsersInstance().getUser(token);
+        client = clientRepository.getOne(client.getId());
         return client.getOrders();
     }
 
