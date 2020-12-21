@@ -1,5 +1,7 @@
 package omgtu.carservice.controller;
 
+import omgtu.carservice.dto.DeleteRequestModel;
+import omgtu.carservice.dto.DeleteResponseModel;
 import omgtu.carservice.model.Order;
 import omgtu.carservice.service.OrderService;
 import org.springframework.web.bind.annotation.*;
@@ -23,5 +25,10 @@ public class OrderController {
     @GetMapping
     public List<Order> getAllByToken(@CookieValue(value = "token") String token) {
         return orderService.getAll(token);
+    }
+
+    @PostMapping("/removeOrder")
+    public DeleteResponseModel removeByID(@RequestBody DeleteRequestModel id) {
+        return orderService.removeById(id);
     }
 }
