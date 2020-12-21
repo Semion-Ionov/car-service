@@ -37,7 +37,7 @@ public class ClientService {
         if (client == null) {
             return "{\"status\":\"401\",\"message\":\"Для данного токена не найдено соответствий с юзерами\"}";
         }
-        return "{\"status\":\"200\",\"user\":{ \"name\":\"" + client.getName() + "\", \"surname\":\"" + client.getSurname() + "\", \"phone\":\"" + client.getPhone() + "\" ,\"email\":\"" + client.getEmail() + "\"}}";
+        return new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create().toJson(new LoginResponseModel(200, activeUsers.putUser(client), client));
     }
 
     public String logoutUser(String token) {
