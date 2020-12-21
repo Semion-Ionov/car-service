@@ -14,12 +14,8 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order save(Order order) {
-        return orderRepository.save(order);
+    public List<Order> saveAll(List<Order> orders) {
+        return orderRepository.saveAll(orders);
     }
 
-    public List<Order> getByToken(String token) {
-        var client = ActiveUsersService.getActiveUsersInstance().getUser(token);
-        return orderRepository.getAllByClient(client);
-    }
 }

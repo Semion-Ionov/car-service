@@ -2,7 +2,10 @@ package omgtu.carservice.controller;
 
 import omgtu.carservice.model.Order;
 import omgtu.carservice.service.OrderService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -16,12 +19,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order save(@RequestBody Order order) {
-        return orderService.save(order);
-    }
-
-    @GetMapping
-    public List<Order> getByToken(@CookieValue(value = "token")String token) {
-        return orderService.getByToken(token);
+    public List<Order> saveAll(@RequestBody List<Order> orders) {
+        return orderService.saveAll(orders);
     }
 }
